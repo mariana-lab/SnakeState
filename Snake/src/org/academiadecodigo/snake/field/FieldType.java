@@ -1,17 +1,6 @@
 package org.academiadecodigo.snake.field;
 
-import org.academiadecodigo.snake.objects.Drawable;
 
-public enum FieldType implements Drawable{
-    ;
+public enum FieldType{
 
-    @Override
-    public void draw() {
-
-    }
-
-    @Override
-    public void delete() {
-
-    }
 }
