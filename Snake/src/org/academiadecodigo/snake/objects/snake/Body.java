@@ -2,6 +2,7 @@ package org.academiadecodigo.snake.objects.snake;
 
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Shape;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.snake.grid.Position;
@@ -38,6 +39,7 @@ public class Body implements SnakeBodyPart {
     }
 
     public void move(int nextPosX, int nextPosY) {
+        ((Rectangle)this.shape).translate(nextPosX,nextPosY);
         this.pos.setCol(this.pos.getCol() + nextPosX);
         this.pos.setRow(this.pos.getRow() + nextPosY);
     }
