@@ -43,6 +43,7 @@ public class Game {
 
         while (true){
 
+            this.snake.pollDirection();
             this.snake.move();
             this.snake.draw();
             Thread.sleep(100);

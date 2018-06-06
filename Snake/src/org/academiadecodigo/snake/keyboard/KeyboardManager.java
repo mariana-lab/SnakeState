@@ -34,7 +34,7 @@ public class KeyboardManager {
 
         event = new KeyboardEvent();
         event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        event.setKey(KeyboardEvent.KEY_RIGHT);
+        event.setKey(KeyboardEvent.KEY_DOWN);
         this.keyboard.addEventListener(event);
 
         event = new KeyboardEvent();

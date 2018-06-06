@@ -1,7 +1,9 @@
 package org.academiadecodigo.snake.objects.snake;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Shape;
+import org.academiadecodigo.snake.field.Field;
 import org.academiadecodigo.snake.grid.Position;
 import org.academiadecodigo.snake.objects.Collidable;
 import org.academiadecodigo.snake.objects.GameObject;
@@ -34,17 +36,16 @@ public class Snake extends GameObject {
         //check direction of head and move it
         //move of every body to the next pos
 
-       // Direction dir = this.headDirection;
+        Direction dir = this.head.getDirection();
 
-        //for ( SnakeBodyPart part : snakeBody){
-          //     if(!(part instanceof  Head)){
-            //       part.setDirection(dir);
-              //     this.moveToDirection(part);
-               //}
-        //}´
+        for (SnakeBodyPart part : snakeBody) {
+            if (!(part instanceof Head)) {
+                part.setDirection(dir);
+                this.moveToDirection(part);
+            }
+        }
 
         this.moveToDirection(head);
-
 
     }
 
@@ -56,7 +57,7 @@ public class Snake extends GameObject {
     public void pollDirection() {
 
         if (!this.directionQueue.isEmpty()) {
-            this.headDirection = this.directionQueue.poll();
+            this.head.setDirection(this.directionQueue.poll());
         }
 
     }
@@ -84,11 +85,15 @@ public class Snake extends GameObject {
 
     }
 
+    public void consume(){
+        //adds a new body part
+    }
+
     @Override
     public void draw() {
 
         for (SnakeBodyPart part : snakeBody) {
-              part.draw();
+            part.draw();
         }
 
     }
