@@ -6,6 +6,7 @@ import org.academiadecodigo.simplegraphics.graphics.Shape;
 import org.academiadecodigo.snake.field.Field;
 import org.academiadecodigo.snake.grid.Position;
 import org.academiadecodigo.snake.objects.Collidable;
+import org.academiadecodigo.snake.objects.Eatable;
 import org.academiadecodigo.snake.objects.GameObject;
 
 import java.util.LinkedList;
@@ -85,8 +86,12 @@ public class Snake extends GameObject {
 
     }
 
-    public void consume(){
-        //adds a new body part
+    public void consume(Eatable eatable){
+        //adds the effect of an eatable
+    }
+
+    public void grow(){
+        //the snake grows plus 1 size
     }
 
     @Override

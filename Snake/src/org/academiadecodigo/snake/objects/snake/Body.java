@@ -39,7 +39,7 @@ public class Body implements SnakeBodyPart {
     }
 
     public void move(int nextPosX, int nextPosY) {
-        ((Rectangle)this.shape).translate(nextPosX,nextPosY);
+        ((Rectangle)this.shape).translate(nextPosX*this.shape.getWidth(),nextPosY*this.shape.getHeight());
         this.pos.setCol(this.pos.getCol() + nextPosX);
         this.pos.setRow(this.pos.getRow() + nextPosY);
     }

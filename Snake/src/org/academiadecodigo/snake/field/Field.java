@@ -7,7 +7,7 @@ import org.academiadecodigo.snake.objects.Drawable;
 public class Field implements Drawable {
 
     private Grid grid;
-    private static final int CELL_SIZE = 10;
+    private static final int CELL_SIZE = 1;
     private static final int PADDING = 10;
     private Rectangle canvas;
 

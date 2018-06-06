@@ -1,4 +1,5 @@
 package org.academiadecodigo.snake;
+
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
@@ -22,16 +23,18 @@ public class Game {
     private Drawable[] drawables;
     private KeyboardHandler snakeHandler;
     private KeyboardManager manager;
+    private int x;
 
 
-    public Game(){
+    public Game() {
 
-        this.grid = new Grid(100 ,100);
-        this.snake = new Snake(new Rectangle(Field.getPadding(), Field.getPadding() , Field.getCellSize(), Field.getCellSize()),
-                Color.BLACK, new Position(0,0));
+        this.grid = new Grid(100, 100);
+        this.snake = new Snake(new Rectangle(Field.getPadding(), Field.getPadding(), Field.getCellSize(), Field.getCellSize()),
+                Color.BLACK, new Position(0, 0));
 
         this.snakeHandler = new SnakeKeyboardHandler(this.snake);
         this.manager = new KeyboardManager(snakeHandler);
+        this.x = 0;
 
     }
 
@@ -41,12 +44,15 @@ public class Game {
 
     public void start() throws InterruptedException {
 
-        while (true){
+        while (true) {
 
+            if (x != 60)
+                x++;
             this.snake.pollDirection();
             this.snake.move();
             this.snake.draw();
-            Thread.sleep(100);
+
+            Thread.sleep(100 - x);
 
         }
 
