@@ -4,29 +4,28 @@ import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Shape;
 import org.academiadecodigo.snake.field.Field;
+import org.academiadecodigo.snake.grid.Grid;
 import org.academiadecodigo.snake.grid.Position;
 import org.academiadecodigo.snake.objects.Collidable;
 import org.academiadecodigo.snake.objects.Eatable;
 import org.academiadecodigo.snake.objects.GameObject;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
 
-public class Snake extends GameObject {
+public class Snake extends GameObject implements Iterable<SnakeBodyPart>{
 
     private List<SnakeBodyPart> snakeBody;
     private Direction headDirection;
     private Queue<Direction> directionQueue;
     private SnakeBodyPart head;
+    private Grid grid;
 
-    public Snake(Shape shape, Color color, Position pos) {
+    public Snake(Shape shape, Color color, Grid grid, Position pos) {
 
         this.snakeBody = new LinkedList<>();
         this.headDirection = Direction.EAST;
         this.directionQueue = new PriorityQueue<>();
-
+        this.grid = grid;
         this.head = new Head(shape, color, pos);
         this.head.setDirection(headDirection);
         this.snakeBody.add(head);
@@ -86,11 +85,11 @@ public class Snake extends GameObject {
 
     }
 
-    public void consume(Eatable eatable){
+    public void consume(Eatable eatable) {
         //adds the effect of an eatable
     }
 
-    public void grow(){
+    public void grow() {
         //the snake grows plus 1 size
     }
 
@@ -108,18 +107,37 @@ public class Snake extends GameObject {
 
     }
 
-    @Override
-    public boolean hasCollided(Collidable collidable) {
+    public boolean hasEaten(Collidable collidable) {
+        return this.getCol() == collidable.getCol() && this.getRow() == collidable.getRow();
+    }
+
+    public boolean hasCollided(){
+
+        if(head.getCol() > grid.getCols() || head.getCol() < 0 || head.getRow() > grid.getRows() || head.getRow() < 0){
+            return true;
+        }
+
+        for( SnakeBodyPart s : snakeBody) {
+            if (!(s instanceof Head) && head.getPos().compare(s.getPos())){
+                return true;
+            }
+        }
+
         return false;
     }
 
     @Override
     public int getCol() {
-        return 0;
+        return this.head.getCol();
     }
 
     @Override
     public int getRow() {
-        return 0;
+        return this.head.getRow();
+    }
+
+    @Override
+    public Iterator<SnakeBodyPart> iterator() {
+        return this.snakeBody.iterator();
     }
 }

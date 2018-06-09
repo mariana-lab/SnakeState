@@ -15,11 +15,6 @@ public class Score extends GameObject implements Drawable {
     }
 
     @Override
-    public boolean hasCollided(Collidable collidable) {
-        return false;
-    }
-
-    @Override
     public int getCol() {
         return 0;
     }

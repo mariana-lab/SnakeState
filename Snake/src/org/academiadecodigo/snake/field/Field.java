@@ -7,7 +7,7 @@ import org.academiadecodigo.snake.objects.Drawable;
 public class Field implements Drawable {
 
     private Grid grid;
-    private static final int CELL_SIZE = 1;
+    private static final int CELL_SIZE = 30;
     private static final int PADDING = 10;
     private Rectangle canvas;
 
@@ -17,11 +17,11 @@ public class Field implements Drawable {
         this.canvas = new Rectangle(PADDING, PADDING, this.getWidth(), this.getHeight());
     }
 
-    public int getX(int col) {
+    public static int getX(int col) {
         return col * CELL_SIZE + PADDING;
     }
 
-    public int getY(int row) {
+    public static int getY(int row) {
         return row * CELL_SIZE + PADDING;
     }
 

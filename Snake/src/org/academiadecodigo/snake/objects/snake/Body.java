@@ -62,11 +62,6 @@ public class Body implements SnakeBodyPart {
     }
 
     @Override
-    public boolean hasCollided(Collidable collidable) {
-        return false;
-    }
-
-    @Override
     public int getCol() {
         return 0;
     }

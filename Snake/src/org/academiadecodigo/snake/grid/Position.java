@@ -22,6 +22,11 @@ public class Position {
         this.row = row;
     }
 
+
+    public boolean compare(Position pos){
+        return(this.col == pos.getCol()&& this.row == pos.getRow() );
+    }
+
     public int getRow() {
         return row;
     }

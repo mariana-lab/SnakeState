@@ -4,6 +4,7 @@ import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Shape;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
+import org.academiadecodigo.snake.field.Field;
 import org.academiadecodigo.snake.grid.Position;
 import org.academiadecodigo.snake.objects.Collidable;
 import org.academiadecodigo.snake.objects.GameObject;
@@ -37,7 +38,7 @@ public class Head implements SnakeBodyPart {
     }
 
     public void move(int nextPosX, int nextPosY) {
-        ((Rectangle)this.shape).translate(nextPosX,nextPosY);
+        ((Rectangle)this.shape).translate(Field.getCellSize() * nextPosX,Field.getCellSize() * (nextPosY));
         this.pos.setCol(this.pos.getCol() + nextPosX);
         this.pos.setRow(this.pos.getRow() + nextPosY);
     }
@@ -61,18 +62,13 @@ public class Head implements SnakeBodyPart {
     }
 
     @Override
-    public boolean hasCollided(Collidable collidable) {
-        return false;
-    }
-
-    @Override
     public int getCol() {
-        return 0;
+        return this.pos.getCol();
     }
 
     @Override
     public int getRow() {
-        return 0;
+        return this.pos.getRow();
     }
 
     @Override

@@ -28,14 +28,13 @@ public class Game {
 
     public Game() {
 
-        this.grid = new Grid(100, 100);
+        this.grid = new Grid(20, 20);
         this.snake = new Snake(new Rectangle(Field.getPadding(), Field.getPadding(), Field.getCellSize(), Field.getCellSize()),
-                Color.BLACK, new Position(0, 0));
+                Color.BLACK, grid, new Position(0, 0));
 
         this.snakeHandler = new SnakeKeyboardHandler(this.snake);
         this.manager = new KeyboardManager(snakeHandler);
-        this.x = 0;
-
+        this.apple = new Apple(this.grid, this.snake);
     }
 
     public void init() {
@@ -46,15 +45,44 @@ public class Game {
 
         while (true) {
 
-            if (x != 60)
-                x++;
+            Thread.sleep(150);
+
+
             this.snake.pollDirection();
             this.snake.move();
+
+            checkCollision();
+
+            if (checkHasEaten()) {
+                System.out.println("comeu");
+                this.apple.locate(this.grid, this.snake);
+            }
+
+            System.out.println("APPLE " + this.apple.getCol() + " " + this.apple .getRow());
+            System.out.println("SNAKE " + this.snake.getCol() + " " + this.snake.getRow());
+
+            this.apple.draw();
             this.snake.draw();
 
-            Thread.sleep(100 - x);
+        }
+
+    }
+
+    private void checkCollision() {
+        if (this.snake.hasCollided()) {
 
         }
+
+
+    }
+
+    private boolean checkHasEaten() {
+        //criar eatable object
+        //passar como argumento
+        //chamar haseaten da snake
+
+        return this.snake.hasEaten(this.apple);
+
 
     }
 }
