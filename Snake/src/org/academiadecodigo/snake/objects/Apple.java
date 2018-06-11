@@ -20,8 +20,10 @@ public class Apple extends GameObject implements Eatable {
 
         this.pos = new Position(0,0);
 
-        this.ellipse = new Ellipse(0, 0, Field.getCellSize(), Field.getCellSize());
+        this.ellipse = new Ellipse(Field.getX(0), Field.getY(0), Field.getCellSize(), Field.getCellSize());
+        this.draw();
         this.locate(grid, snake);
+
 
     }
 
@@ -49,14 +51,16 @@ public class Apple extends GameObject implements Eatable {
         int col = (int) Math.round(Math.random() * grid.getCols());
         int row = (int) Math.round(Math.random() * grid.getRows());
 
+
         for (SnakeBodyPart s : snake) {
             if (col == s.getCol() && row == s.getRow()) {
                 locate(grid, snake);
+                return;
             }
         }
 
+        this.ellipse.translate(  (col  - pos.getCol()) * Field.getCellSize(), (row - pos.getRow()) * Field.getCellSize() );
         this.pos.setPosition(col, row);
-        this.ellipse.translate(col * Field.getCellSize(), row * Field.getCellSize());
     }
 
 

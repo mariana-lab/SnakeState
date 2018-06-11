@@ -45,7 +45,7 @@ public class Game {
 
         while (true) {
 
-            Thread.sleep(150);
+            Thread.sleep(300);
 
 
             this.snake.pollDirection();
@@ -61,7 +61,7 @@ public class Game {
             System.out.println("APPLE " + this.apple.getCol() + " " + this.apple .getRow());
             System.out.println("SNAKE " + this.snake.getCol() + " " + this.snake.getRow());
 
-            this.apple.draw();
+            //.apple.draw();
             this.snake.draw();
 
         }
