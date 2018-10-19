@@ -37,6 +37,7 @@ public class Game {
         this.apple = new Apple(this.grid, this.snake);
     }
 
+
     public void init() {
 
     }

@@ -1,5 +1,6 @@
 package org.academiadecodigo.snake.field;
 
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.snake.grid.Grid;
 import org.academiadecodigo.snake.objects.Drawable;
@@ -43,7 +44,7 @@ public class Field implements Drawable {
 
     @Override
     public void draw() {
-
+        this.canvas.setColor(Color.WHITE);
         this.canvas.draw();
     }
 

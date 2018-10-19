@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--posso dar varios nomes, produção,testes, etc -->
+<!--basedir será a partir de aqui .-->
+<!--o default ira chamar o jarfile-->
+
+<project name="SnakeState" basedir="." default="jarfile">
+    <!--para guardar variables-->
+    <target name="init" description="Initializes properties">
+        <property name="project.name" value="SnakeState"/>
+        <property name="main.class" value="org.academiadecodigo.snake.Main" />
+        <property name="src.dir" value="src/"/>
+        <property name="build.dir" value="build/"/>
+        <property name="classes.dir" value="${build.dir}/classes"/>
+        <property name="etc.dir" value="etc/"/>
+        <property name="lib.dir" value="lib" />
+        <path id="classpath">
+            <fileset dir="${lib.dir}" includes="**/*.jar" />
+        </path>
+    </target>
+
+    <!--cannot run without the target init $ant prepare corre init e cria a pasta-->
+<target name="prepare" description="Create the build and classes directories" depends="init">
+    <mkdir dir="${classes.dir}"/>
+</target>
+
+<target name="compile" description="compiles the code" depends="prepare">
+    <javac srcdir="${src.dir}" destdir="${classes.dir}">
+        <classpath refid="classpath"/>
+    </javac>
+</target>
+
+<target name="jarfile" description="Archives the code" depends="compile">
+    <jar destfile="${build.dir}/${project.name}.jar" basedir="${classes.dir}">
+        <manifest>
+            <attribute name="Main-Class" value="${main.class}" />
+            <attribute name="Class-Path" value="${lib.dir}" />
+        </manifest>
+        <zipgroupfileset dir="${lib.dir}" includes="*.jar"/>
+    </jar>
+</target>
+
+</project>
