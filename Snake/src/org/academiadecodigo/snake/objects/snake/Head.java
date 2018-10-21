@@ -4,10 +4,8 @@ import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Shape;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
-import org.academiadecodigo.snake.field.Field;
+import org.academiadecodigo.snake.grid.Grid;
 import org.academiadecodigo.snake.grid.Position;
-import org.academiadecodigo.snake.objects.Collidable;
-import org.academiadecodigo.snake.objects.GameObject;
 
 public class Head implements SnakeBodyPart {
     private Shape shape;
@@ -38,7 +36,7 @@ public class Head implements SnakeBodyPart {
     }
 
     public void move(int nextPosX, int nextPosY) {
-        ((Rectangle)this.shape).translate(Field.getCellSize() * nextPosX,Field.getCellSize() * (nextPosY));
+        ((Rectangle)this.shape).translate(Grid.getCellSize() * nextPosX, Grid.getCellSize() * (nextPosY));
         this.pos.setCol(this.pos.getCol() + nextPosX);
         this.pos.setRow(this.pos.getRow() + nextPosY);
     }

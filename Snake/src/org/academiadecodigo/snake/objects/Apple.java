@@ -1,7 +1,6 @@
 package org.academiadecodigo.snake.objects;
 
 import org.academiadecodigo.simplegraphics.graphics.Ellipse;
-import org.academiadecodigo.snake.field.Field;
 import org.academiadecodigo.snake.grid.Grid;
 import org.academiadecodigo.snake.grid.Position;
 import org.academiadecodigo.snake.objects.snake.Head;
@@ -20,7 +19,7 @@ public class Apple extends GameObject implements Eatable {
 
         this.pos = new Position(0,0);
 
-        this.ellipse = new Ellipse(Field.getX(0), Field.getY(0), Field.getCellSize(), Field.getCellSize());
+        this.ellipse = new Ellipse(Grid.getX(0), Grid.getY(0), Grid.getCellSize(), Grid.getCellSize());
         this.draw();
         this.locate(grid, snake);
 
@@ -59,7 +58,7 @@ public class Apple extends GameObject implements Eatable {
             }
         }
 
-        this.ellipse.translate(  (col  - pos.getCol()) * Field.getCellSize(), (row - pos.getRow()) * Field.getCellSize() );
+        this.ellipse.translate(  (col  - pos.getCol()) * Grid.getCellSize(), (row - pos.getRow()) * Grid.getCellSize() );
         this.pos.setPosition(col, row);
     }
 

@@ -1,9 +1,7 @@
 package org.academiadecodigo.snake.objects.snake;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Shape;
-import org.academiadecodigo.snake.field.Field;
 import org.academiadecodigo.snake.grid.Grid;
 import org.academiadecodigo.snake.grid.Position;
 import org.academiadecodigo.snake.objects.Collidable;
