@@ -6,8 +6,6 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Shape;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.snake.grid.Position;
-import org.academiadecodigo.snake.objects.Collidable;
-import org.academiadecodigo.snake.objects.GameObject;
 
 public class Body implements SnakeBodyPart {
 

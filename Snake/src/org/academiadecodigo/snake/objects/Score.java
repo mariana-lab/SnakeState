@@ -1,8 +1,6 @@
 package org.academiadecodigo.snake.objects;
 
-import org.academiadecodigo.snake.grid.Position;
-
-public class Score extends GameObject implements Drawable {
+public class Score implements Drawable, Collidable {
 
     @Override
     public void draw() {

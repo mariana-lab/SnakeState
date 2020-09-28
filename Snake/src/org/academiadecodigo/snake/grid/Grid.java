@@ -6,12 +6,13 @@ import org.academiadecodigo.snake.objects.Drawable;
 
 public class Grid {
 
+    private static final int CELL_SIZE = 40;
+    private static final int PADDING = 10;
 
     private int cols;
     private int rows;
+
     private Drawable[][] grid;
-    private static final int CELL_SIZE = 30;
-    private static final int PADDING = 10;
     private Rectangle canvas;
 
     public Grid(int cols , int rows){
@@ -25,6 +26,7 @@ public class Grid {
         
 
     }
+
 
     private Drawable[][] createObjects(){
         Drawable[][] newGrid = new Drawable[cols][rows];
@@ -80,6 +82,4 @@ public class Grid {
         this.canvas.delete();
 
     }
-
-
 }
